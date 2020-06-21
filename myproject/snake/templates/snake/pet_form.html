@@ -1,0 +1,20 @@
+{% extends 'snake/base.html' %}
+
+{% block content %}
+<form action="" method="POST">
+<table class="table">
+    <tr>
+        <th>ペットの名前</th>
+        <td>{{form.name}}</td>
+        <th class="d-none">最終給餌日時</th>
+        <td class="d-none">{{form.date}}</td>
+        <th class="d-none">次回給餌日時</th>
+        <td class="d-none">{{form.nextdate}}</td>
+
+    </tr>
+</table>
+    <button type="submit" class="btn btn-primary">送信</button>
+    <button onclick="location.href='{% url 'snake:index' %}'" class="btn btn-danger ml-1">キャンセル</button>
+    {% csrf_token %}
+</form>
+{% endblock %}

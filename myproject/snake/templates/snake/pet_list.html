@@ -1,0 +1,30 @@
+{% extends 'snake/base.html' %}
+
+{% block content %}
+<h1>ペット一覧</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ペット</th>
+        <th>最終給餌日時</th>
+        <th>次回給餌日時</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for pet in pet_list %}
+    <tr>
+        <td>{{pet.name}}</td>
+        <td>{{pet.date}}</td>
+        <td>{{pet.nextdate}}</td>
+        <td><button onclick="location.href='{% url 'snake:update' pet.pk %}'" class="btn btn-primary">給餌</button></td>
+        <td><button onclick="location.href='{% url 'snake:delete' pet.pk %}'" class="btn btn-danger">削除</button></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% include 'snake/page1.html' %}
+
+{% endblock %}
